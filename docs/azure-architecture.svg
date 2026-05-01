@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 950 520" font-family="Consolas, Monaco, monospace">
+  <defs>
+    <linearGradient id="bgAz" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0c1222"/>
+      <stop offset="100%" style="stop-color:#162032"/>
+    </linearGradient>
+    <filter id="shadowAz">
+      <feDropShadow dx="2" dy="2" stdDeviation="3" flood-color="#000" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+  <rect width="950" height="520" rx="12" fill="url(#bgAz)"/>
+  <text x="475" y="30" text-anchor="middle" fill="#94a3b8" font-size="13" font-weight="bold">AZURE MULTI-REGION ARCHITECTURE</text>
+  <line x1="50" y1="42" x2="900" y2="42" stroke="#334155" stroke-width="1"/>
+
+  <!-- Users / Traffic Manager -->
+  <rect x="375" y="55" width="200" height="50" rx="8" fill="#1a2744" stroke="#3b82f6" stroke-width="1.5" filter="url(#shadowAz)"/>
+  <text x="475" y="77" text-anchor="middle" fill="#93c5fd" font-size="11" font-weight="bold">Azure Traffic Manager</text>
+  <text x="475" y="95" text-anchor="middle" fill="#64748b" font-size="9">DNS-based load balancing</text>
+
+  <!-- Users icon -->
+  <text x="475" y="52" text-anchor="middle" fill="#64748b" font-size="9">Users / CDN</text>
+
+  <!-- Lines to regions -->
+  <line x1="420" y1="105" x2="220" y2="150" stroke="#3b82f6" stroke-width="1.5" stroke-dasharray="5"/>
+  <line x1="530" y1="105" x2="730" y2="150" stroke="#3b82f6" stroke-width="1.5" stroke-dasharray="5"/>
+
+  <!-- Region 1: East US -->
+  <rect x="30" y="145" width="390" height="350" rx="10" fill="none" stroke="#22c55e" stroke-width="1" stroke-dasharray="6"/>
+  <text x="225" y="168" text-anchor="middle" fill="#86efac" font-size="11" font-weight="bold">Region: East US (Primary)</text>
+
+  <!-- App Service East -->
+  <rect x="50" y="185" width="160" height="55" rx="6" fill="#1a2e1a" stroke="#22c55e" stroke-width="1.2" filter="url(#shadowAz)"/>
+  <text x="130" y="208" text-anchor="middle" fill="#86efac" font-size="10" font-weight="bold">App Service</text>
+  <text x="130" y="225" text-anchor="middle" fill="#64748b" font-size="8">FastAPI + Gunicorn</text>
+  <text x="130" y="236" text-anchor="middle" fill="#64748b" font-size="8">3 instances (autoscale)</text>
+
+  <!-- AKS East -->
+  <rect x="240" y="185" width="160" height="55" rx="6" fill="#1a2e2a" stroke="#14b8a6" stroke-width="1.2" filter="url(#shadowAz)"/>
+  <text x="320" y="208" text-anchor="middle" fill="#5eead4" font-size="10" font-weight="bold">AKS Cluster</text>
+  <text x="320" y="225" text-anchor="middle" fill="#64748b" font-size="8">Worker Nodes: 3-8</text>
+  <text x="320" y="236" text-anchor="middle" fill="#64748b" font-size="8">Background Jobs</text>
+
+  <!-- Redis East -->
+  <rect x="50" y="260" width="110" height="45" rx="6" fill="#2a1a2e" stroke="#a855f7" stroke-width="1.2" filter="url(#shadowAz)"/>
+  <text x="105" y="280" text-anchor="middle" fill="#d8b4fe" font-size="10" font-weight="bold">Redis Cache</text>
+  <text x="105" y="296" text-anchor="middle" fill="#64748b" font-size="8">Session + Queue</text>
+
+  <!-- SQL East -->
+  <rect x="180" y="260" width="130" height="45" rx="6" fill="#2e2a1a" stroke="#eab308" stroke-width="1.2" filter="url(#shadowAz)"/>
+  <text x="245" y="280" text-anchor="middle" fill="#fde047" font-size="10" font-weight="bold">Azure SQL</text>
+  <text x="245" y="296" text-anchor="middle" fill="#64748b" font-size="8">Primary (Read/Write)</text>
+
+  <!-- Blob East -->
+  <rect x="325" y="260" width="80" height="45" rx="6" fill="#1e293b" stroke="#64748b" stroke-width="1.2" filter="url(#shadowAz)"/>
+  <text x="365" y="280" text-anchor="middle" fill="#94a3b8" font-size="10" font-weight="bold">Blob</text>
+  <text x="365" y="296" text-anchor="middle" fill="#64748b" font-size="8">Storage</text>
+
+  <!-- Key Vault East -->
+  <rect x="50" y="325" width="120" height="40" rx="6" fill="#2e1a1a" stroke="#ef4444" stroke-width="1.2" filter="url(#shadowAz)"/>
+  <text x="110" y="345" text-anchor="middle" fill="#fca5a5" font-size="9" font-weight="bold">Key Vault</text>
+  <text x="110" y="358" text-anchor="middle" fill="#64748b" font-size="8">Secrets + Certs</text>
+
+  <!-- App Insights East -->
+  <rect x="190" y="325" width="130" height="40" rx="6" fill="#1a2332" stroke="#6366f1" stroke-width="1.2" filter="url(#shadowAz)"/>
+  <text x="255" y="345" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="bold">App Insights</text>
+  <text x="255" y="358" text-anchor="middle" fill="#64748b" font-size="8">Monitoring + Alerts</text>
+
+  <!-- VNet label -->
+  <rect x="40" y="390" width="370" height="35" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="225" y="412" text-anchor="middle" fill="#64748b" font-size="9">VNet: 10.1.0.0/16 | NSG | Private Endpoints</text>
+
+  <!-- Firewall East -->
+  <rect x="40" y="440" width="370" height="35" rx="6" fill="#2e1a1a" stroke="#ef4444" stroke-width="1" stroke-dasharray="4"/>
+  <text x="225" y="462" text-anchor="middle" fill="#fca5a5" font-size="9">Azure Firewall + WAF | DDoS Protection Standard</text>
+
+  <!-- Region 2: West US -->
+  <rect x="530" y="145" width="390" height="350" rx="10" fill="none" stroke="#f97316" stroke-width="1" stroke-dasharray="6"/>
+  <text x="725" y="168" text-anchor="middle" fill="#fdba74" font-size="11" font-weight="bold">Region: West US (DR / Read Replica)</text>
+
+  <!-- App Service West -->
+  <rect x="550" y="185" width="160" height="55" rx="6" fill="#2e2a1a" stroke="#f97316" stroke-width="1.2" filter="url(#shadowAz)"/>
+  <text x="630" y="208" text-anchor="middle" fill="#fdba74" font-size="10" font-weight="bold">App Service</text>
+  <text x="630" y="225" text-anchor="middle" fill="#64748b" font-size="8">FastAPI + Gunicorn</text>
+  <text x="630" y="236" text-anchor="middle" fill="#64748b" font-size="8">2 instances (standby)</text>
+
+  <!-- AKS West -->
+  <rect x="740" y="185" width="160" height="55" rx="6" fill="#1a2e2a" stroke="#14b8a6" stroke-width="1.2" filter="url(#shadowAz)"/>
+  <text x="820" y="208" text-anchor="middle" fill="#5eead4" font-size="10" font-weight="bold">AKS Cluster</text>
+  <text x="820" y="225" text-anchor="middle" fill="#64748b" font-size="8">Worker Nodes: 2-5</text>
+  <text x="820" y="236" text-anchor="middle" fill="#64748b" font-size="8">Standby</text>
+
+  <!-- Redis West -->
+  <rect x="550" y="260" width="110" height="45" rx="6" fill="#2a1a2e" stroke="#a855f7" stroke-width="1.2" filter="url(#shadowAz)"/>
+  <text x="605" y="280" text-anchor="middle" fill="#d8b4fe" font-size="10" font-weight="bold">Redis Cache</text>
+  <text x="605" y="296" text-anchor="middle" fill="#64748b" font-size="8">Geo-Replicated</text>
+
+  <!-- SQL West -->
+  <rect x="680" y="260" width="130" height="45" rx="6" fill="#2e2a1a" stroke="#eab308" stroke-width="1.2" filter="url(#shadowAz)"/>
+  <text x="745" y="280" text-anchor="middle" fill="#fde047" font-size="10" font-weight="bold">Azure SQL</text>
+  <text x="745" y="296" text-anchor="middle" fill="#64748b" font-size="8">Geo-Replica (Read)</text>
+
+  <!-- Blob West -->
+  <rect x="828" y="260" width="80" height="45" rx="6" fill="#1e293b" stroke="#64748b" stroke-width="1.2" filter="url(#shadowAz)"/>
+  <text x="868" y="280" text-anchor="middle" fill="#94a3b8" font-size="10" font-weight="bold">Blob</text>
+  <text x="868" y="296" text-anchor="middle" fill="#64748b" font-size="8">GRS</text>
+
+  <!-- VNet West -->
+  <rect x="540" y="390" width="370" height="35" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="725" y="412" text-anchor="middle" fill="#64748b" font-size="9">VNet: 10.2.0.0/16 | VNet Peering to East</text>
+
+  <!-- Replication arrow -->
+  <line x1="420" y1="282" x2="530" y2="282" stroke="#eab308" stroke-width="1.5" stroke-dasharray="4" marker-end="url(#arrowYellowAz)"/>
+  <text x="475" y="275" text-anchor="middle" fill="#fde047" font-size="8">Geo-Replication</text>
+  <defs><marker id="arrowYellowAz" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#eab308"/></marker></defs>
+</svg>

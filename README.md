@@ -1,22 +1,30 @@
-# Azure Multi-Region Fault-Tolerant Architecture
+# Designing a Fault-Tolerant Multi-Region Architecture on Azure — What I Learned the Hard Way
 
-Designing a multi-region Azure architecture for "five nines of availability" on a $2,800/month budget — the architecture decisions, cost traps, networking setup, and the disaster recovery strategy that actually saved us during an East US outage.
+After passing AZ-900, I designed a multi-region Azure architecture for a real project. This post covers the architecture decisions, cost traps, networking setup, and the disaster recovery strategy that actually saved us during an outage.
 
-## Stack
+## Architecture
 
-- **App tier**: FastAPI on Azure App Service (P1v3) + AKS for background workers
-- **Data tier**: Azure SQL (Standard S3) with active geo-replication, Redis Cache (Standard C1)
-- **Networking**: VNet peering across regions, Azure Front Door + Traffic Manager
-- **Observability**: Application Insights, Log Analytics workspace
-- **Disaster recovery**: East US (primary) → West US (warm standby), automated failover via Traffic Manager priority routing
-- **Budget**: ~$2,800/month, RPO < 5 min, RTO < 15 min
+![Architecture](docs/azure-architecture.svg)
+
+## Background
+
+A few months after getting my AZ-900 certification, I was asked to help design the cloud infrastructure for a project that needed to handle traffic from both US coasts with "five nines of availability." That phrase got thrown around a lot in the requirements doc. I nodded along in the meeting, then went home and calculated what five nines actually means: 5 minutes and 15 seconds of downtime per *year*. For context, a single mistyped `az` CLI command can take you down for longer than that.
+
+This post is about the architecture I designed, the mistakes I made along the way, and the disaster recovery setup that actually saved us during an East US outage about four months in.
 
 ## Topics
 
 `Azure` · `Cloud Architecture` · `DevOps` · `Networking` · `Disaster Recovery`
 
+
+## Repo contents
+
+Artifacts and configs from the build:
+
+- **scripts/** — script.sh, script-2.sh, script-3.sh, script-4.sh, script-5.sh, script-6.sh, script-7.sh
+
 ## Read the full write-up
 
 [reshamchaudhary.com/blog/azure-multi-region-architecture](https://reshamchaudhary.com/blog/azure-multi-region-architecture)
 
-The blog post covers the architecture diagram, every resource and its sizing, the cost breakdown, the networking decisions (and the ones I got wrong on the first pass), and the actual outage where the failover paid for itself.
+The blog post has the full walkthrough — the design decisions, debugging stories, performance numbers, and the lessons that didn't make it into the configs.
